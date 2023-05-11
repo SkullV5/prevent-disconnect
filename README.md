@@ -15,13 +15,13 @@ function ClickConnect() {
 
 let intervalId = setInterval(ClickConnect, 60000);
 
-// Método para pausar la ejecución
+// Method to pause execution
 function pauseExecution() {
   isPaused = true;
   console.log("Execution paused");
 }
 
-// Método para reanudar la ejecución
+// Method to resume execution
 function resumeExecution() {
   isPaused = false;
   console.log("Execution resumed");
