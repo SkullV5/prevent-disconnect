@@ -1,11 +1,32 @@
-# Prevent Colab Session from Disconnecting
+# Google Colab Auto-Connect: Prevent Session Disconnections | Code Script
 
-Running long sessions on [Google Colab](https://colab.research.google.com) without any activity can cause the session to disconnect, losing all the data and variables from the earlier executed cells. This can be prevented by entering the following code into the browser console (opened by pressing <button>Ctrl</button> + <button>Shift</button> + <button>I</button>).
+When using [Google Colab](https://colab.research.google.com) for extended sessions, it's important to prevent disconnections that can lead to data and variable loss. Avoid this issue by running the following code in your browser's console (accessed by pressing <button>Ctrl</button> + <button>Shift</button> + <button>I</button>).
 
 ```javascript
+
+let isPaused = false;
+
 function ClickConnect() {
+  if (!isPaused) {
     console.log("Working");
     document.querySelector("colab-toolbar-button").click();
+  }
 }
-setInterval(ClickConnect, 60000);
+
+let intervalId = setInterval(ClickConnect, 60000);
+
+// Método para pausar la ejecución
+function pauseExecution() {
+  isPaused = true;
+  console.log("Execution paused");
+}
+
+// Método para reanudar la ejecución
+function resumeExecution() {
+  isPaused = false;
+  console.log("Execution resumed");
+}
+
 ```
+
+You can call pauseExecution() to pause script execution and call resumeExecution() to resume it whenever you want.
